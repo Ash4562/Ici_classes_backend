@@ -2,9 +2,9 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const sendEnquiryEmail = async (req, res) => {
-  const { name, email, message,phoneNo } = req.body;
+  const { name, message,phoneNo } = req.body;
 
-  if (!name || !email || !message || !phoneNo) {
+  if (!name || !message || !phoneNo) {
     return res.status(400).json({ error: "All fields are required!" });
   }
 
@@ -26,9 +26,8 @@ const sendEnquiryEmail = async (req, res) => {
       html: `
         <h3>New Enquiry Details</h3>
         <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong> ${message}</p>
-        <p><strong>Message:</strong> ${phoneNo}</p>
+        <p><strong>phoneNo:</strong> ${phoneNo}</p>
       `,
     };
 
